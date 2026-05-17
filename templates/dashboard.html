@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Activities - SilverBoost{% endblock %}
+{% block content %}
+  <h2 style="margin-bottom:6px">Welcome, {{ username }}</h2>
+  <p style="color:var(--muted);margin-top:0;margin-bottom:18px">Discover activities in your community</p>
+  <section class="grid">
+    {% for cat, acts in activities.items() %}
+      <div class="card category-card">
+        <h3>{{ cat }}</h3>
+        <p>{{ acts|length }} activities</p>
+        <a class="btn ghost" href="{{ url_for('activities', category=cat) }}">Explore</a>
+      </div>
+    {% endfor %}
+  </section>
+{% endblock %}

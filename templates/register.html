@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Register - SilverBoost{% endblock %}
+{% block content %}
+  <section class="card form-card">
+    <h2 style="text-align:center;margin-top:0;margin-bottom:8px">Create an Account</h2>
+    <p style="text-align:center;color:var(--muted);margin-top:0;margin-bottom:18px">Join SilverBoost to find local activities and friends</p>
+    <form method="post" action="{{ url_for('register') }}">
+      <label>Username</label>
+      <input name="username" type="text" required>
+      <label>Phone</label>
+      <input name="phone" type="tel">
+      <label>Password</label>
+      <input name="password" type="password" required>
+      <label>Confirm Password</label>
+      <input name="repassword" type="password" required>
+      <div class="form-actions">
+        <button class="btn primary" type="submit">Create account</button>
+        <a class="link" href="{{ url_for('login') }}">Have an account? Login</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

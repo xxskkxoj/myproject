@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}SilverBoost{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="{{ url_for('splash') }}">SilverBoost</a>
+        <nav>
+          {% if session.get('username') %}
+              <span class="nav-item">{{ session.get('username') }}</span>
+              <a class="nav-item" href="{{ url_for('dashboard') }}">Activities</a>
+              <a class="nav-item" href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+              <a class="nav-item" href="{{ url_for('login') }}">Login</a>
+              <a class="nav-item" href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-list">
+            {% for cat, msg in messages %}
+              <div class="flash {{ cat }}">{{ msg }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+      <div class="container">© SilverBoost - Senior Social Platform</div>
+    </footer>
+  </body>
+</html>

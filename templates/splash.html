@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Welcome - SilverBoost{% endblock %}
+{% block content %}
+  <section class="splash">
+    <h1>Welcome to SilverBoost</h1>
+    <p>A warm social activities platform for seniors.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="{{ url_for('login') }}">Get started</a>
+      <a class="btn ghost" href="{{ url_for('register') }}">Create account</a>
+    </div>
+  </section>
+{% endblock %}

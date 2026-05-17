@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ category }} - Activities{% endblock %}
+{% block content %}
+  <h2 style="margin-bottom:6px">{{ category }}</h2>
+  <p style="color:var(--muted);margin-top:0;margin-bottom:18px">Available activities</p>
+  <section class="list">
+    {% if activities %}
+      {% for act in activities %}
+        <div class="activity">
+          <div class="activity-info">
+            <h4>{{ act }}</h4>
+          </div>
+          <div class="activity-actions">
+            <a class="btn primary" href="{{ url_for('enroll', category=category, act_idx=loop.index0) }}">Enroll</a>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No activities</p>
+    {% endif %}
+  </section>
+{% endblock %}
